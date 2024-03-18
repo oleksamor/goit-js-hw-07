@@ -29,19 +29,18 @@ const images = [
 ];
 
 const galeryContainerEl = document.querySelector(".gallery");
-// console.log(galeryContainerEl);
-const createGalery = array => {
-return array.map(item => {
-const navItemEl = document.createElement("li");
-navItemEl.classList.add("galery-item");
-const galeryImgEl = document.createElement("img");
-galeryImgEl.classList.add("galery-item_img");
-galeryImgEl.src = item.url;
-galeryImgEl.alt = item.alt;
-galeryImgEl.width = 240;
-navItemEl.append(galeryImgEl);
-galeryContainerEl.append(navItemEl)
-return galeryContainerEl;
-});
-}
-console.log(createGalery(images));
+
+const createGalery = images
+  .map(({ url, alt }) => {
+ return `
+    <li>
+
+      <img   src = ${url}  alt = ${alt} width = 360 hight = 300 >
+      </img>
+
+    </li>
+  `
+
+  })
+  .join("")
+ galeryContainerEl.insertAdjacentHTML("beforeend", createGalery) 
